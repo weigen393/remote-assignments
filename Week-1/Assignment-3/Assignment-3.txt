@@ -1,0 +1,70 @@
+/* input */
+input1 = ['a', 'b', 'c', 'a', 'c', 'a', 'c'];
+input2 = ['e', 'd', 'c', 'd', 'e'];
+
+/* functions */
+function countAandB(input) {
+	var countA = 0;
+	var countB = 0;
+	var num;
+	var letterA, letterB;
+	for (num = 0; num < input.length; num++){
+		if(input[num]=='a'){
+			countA = countA + 1;
+		}else if(input[num]=='b'){
+			countB = countB + 1;
+		}		
+	}
+	
+	/* letter letters*/
+	if(countA >1){
+	letterA = 'letters';
+	}else{
+	letterA = 'letter';
+	};
+	if(countB >1){
+	letterB = 'letters';
+	}else{
+	letterB = 'letter';
+	};
+	
+	/* 0 or others*/
+	if(countA+countB==0){
+	return 0;
+	}else{
+	return countA+countB + " ( " + countA + " ‘a’ "+ letterA + " and " + countB + " ‘b’ " + letterB + ")";
+	}
+}
+
+function toNumber(input) {
+	var EngToNum = [];
+	var num;
+	for (num = 0; num < input.length; num++){	
+		/* change English to number */
+		switch(input[num]){
+			case 'a':
+				EngToNum[num] = 1;				
+			break;	
+			case 'b':
+				EngToNum[num] = 2;
+			break;
+			case 'c':
+				EngToNum[num] = 3;
+			break;
+			case 'd':
+				EngToNum[num] = 4;
+			break;
+			case 'e':
+				EngToNum[num] = 5;
+			break;						
+		}			
+	}	
+	return EngToNum;
+}
+
+/* output */
+console.log(countAandB(input1));
+console.log(toNumber(input1));
+console.log(countAandB(input2));
+console.log(toNumber(input2));
+
