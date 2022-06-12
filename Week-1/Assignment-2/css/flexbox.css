@@ -1,0 +1,29 @@
+/* ================================= 
+  Flexbox
+==================================== */
+.main-header,
+.main-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 12em;  
+}
+.action {
+  display: flex;
+  justify-content: center;
+}
+/* ================================= 
+  Media Queries
+==================================== */
+@media (min-width: 1200px) {
+  .container {
+    margin: 0em auto .5em auto;
+    width: 1200px;
+  }
+}
