@@ -1,5 +1,5 @@
+//Assignment 3.1 O(n^2)
 function count ( input ) {
-// your code here
 	const countCharacter = {};	
 	let check = [];	// check if search before
 	let countEach = 0;
@@ -19,11 +19,26 @@ function count ( input ) {
 	}
 	return countCharacter;
 }
+
+//Assignment 3.1 O(n)
+function count ( input ) {
+	const countCharacter = {};
+	for ( let i = 0; i < input.length; i++ ) {		
+		// did it appear before
+		if ( countCharacter[input[i]] >= 1 ){
+			countCharacter[input[i]] += 1;			
+		}else {					
+			countCharacter[input[i]] = 1;								
+		}		
+	}
+	return countCharacter;
+}
 let input1 = [ "a" , "b" , "c" , "a" , "c" , "a" , "x" ];
 console . log ( count ( input1 ));
 // should print {a:3, b:1, c:2, x:1}
+
+//Assignment 3.2 O(n^2)
 function groupByKey ( input ) {
-// your code here
 	const countCharacter = {};	
 	let check = [];	// check if search before
 	let sum = 0;	
@@ -43,6 +58,21 @@ function groupByKey ( input ) {
 	}
 	return countCharacter;
 }
+
+//Assignment 3.2 O(n)
+function groupByKey ( input ) {
+	const countCharacter = {};
+	for ( let i = 0; i < input.length; i++ ) {		
+		// did it appear before
+		if ( !countCharacter[input[i].key] ){			
+			countCharacter[input[i].key] = input[i].value;		
+		}else {
+			countCharacter[input[i].key] += input[i].value;
+		}		
+	}
+	return countCharacter;
+}
+
 let input2 = [
 { key: "a" , value: 3 },
 { key: "b" , value: 1 },
