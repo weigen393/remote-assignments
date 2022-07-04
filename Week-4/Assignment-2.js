@@ -23,7 +23,7 @@ function render ( data ) {
 		document.body.appendChild(description);
 	}
 }
-ajax ('products.json',
+ajax ('https://appworks-school.github.io/Remote-Aassigiment-Data/products',
 	function ( response ) {
 		render ( response );
 	}

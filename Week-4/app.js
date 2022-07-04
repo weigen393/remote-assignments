@@ -3,8 +3,8 @@ const router = express.Router();
 const { request } = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true}));
-const encoder = bodyParser.urlencoded();
+app.use(bodyParser.urlencoded({ extended: false}));
+const encoder = bodyParser.urlencoded({ extended: false});
 const mysql = require('mysql');
 
 const db = mysql.createConnection({
@@ -43,15 +43,15 @@ router.get('/createusertable', (req, res) => {
 router.post('/', encoder, (req, res) => {
 	var email = req.body.email;
 	var password = req.body.password;	
-	let findEmail = `SELECT * FROM user WHERE email LIKE '${req.body.email}'`;
-	let findBoth = `SELECT * FROM user WHERE email LIKE '${req.body.email}' AND password = ${req.body.password}`;
+	let findEmail = `SELECT * FROM user WHERE email = '${req.body.email}'`;
+	let findBoth = `SELECT * FROM user WHERE email = '${req.body.email}' AND password = '${req.body.password}'`;
 	let sql = 'INSERT INTO user SET ?';
 	if(req.body.submit==="Sign-up"){	//click sign up
 		db.query(findEmail, (err, result, fields) => {
 			if(err) throw err;
 			if(result.length){							
 				console.log('You have already registered.');
-				res.redirect("/");				
+				res.redirect("/");							
 			}else{
 				db.query(sql, {email, password}, function(err, result, fields){
 				if(err) throw err;
